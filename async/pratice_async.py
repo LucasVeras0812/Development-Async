@@ -8,13 +8,16 @@ async def carregar_cabecalho(nome):
     log(f'Carregando {nome}')
     await asyncio.sleep(4)
     log(f'Terminando {nome}')
+    await asyncio.sleep(2)
 
 async def carregar_conteudo(nome):
+    await asyncio.sleep(6)
     log(f'Carregando {nome}')
-    await asyncio.sleep(4)
+    await asyncio.sleep(1)
     log(f'Terminando {nome}')
 
 async def carregar_rodape(nome):
+    await asyncio.sleep(9)
     log(f'Carregando {nome}')
     await asyncio.sleep(1)
     log(f'Terminando {nome}')
