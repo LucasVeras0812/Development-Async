@@ -25,18 +25,25 @@ async def carregar_imagens():
     log('✅ Terminado imagens')
 
 async def carregar_analytics():
-    log('Carregando HTML...')
-    await asyncio.sleep(6)
+    log('Carregando analytics...')
+    await asyncio.sleep(2)
     log('✅ Terminado analytics')
 
 
 async def main():
-    await asyncio.gather(
-        carregar_html(),
-        carregar_css(),
-        carregar_js(),
-        carregar_imagens(),
-        carregar_analytics()
-    )
+    #Criado variáveis separadas para cada tipo
+    html = asyncio.create_task(carregar_html())
+    css = asyncio.create_task(carregar_css())
+    js = asyncio.create_task(carregar_js())
+    imagens = asyncio.create_task(carregar_imagens())
+
+    #Aguarda as tarefas necessárias para o analytics
+    await html
+    await css
+    await js
+    await imagens
+
+    #Depois de carregar o  HTML, CSS e JS podemos carregar o analytics
+    await carregar_analytics()
 
 asyncio.run(main())
